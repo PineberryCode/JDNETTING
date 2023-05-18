@@ -1,0 +1,8 @@
+1. Find host quantities required [checked]
+2. Sort host quantities [checked]
+3. Create a singly linked list. [checked]
+4. Convert from String to Binary and reverse. [ML]
+5. Find subnet mask []
+6. Find mask []
+7. Find red IP []
+Key: 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
