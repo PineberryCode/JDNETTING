@@ -1,8 +1,9 @@
-import General.DefaultClass;
-import General.DefaultText;
-import Logical.Methods;
+import Process.DefaultClass;
+import Process.DefaultText;
 
 import java.util.Scanner;
+
+import Controller.Methods;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
@@ -38,5 +39,6 @@ public class Dev implements DefaultClass {
             System.out.println(a);
         }
         methods.GetNewPrefNet();
+        scn.close();
     }
 }
