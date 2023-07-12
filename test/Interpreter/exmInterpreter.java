@@ -1,4 +1,4 @@
-package test.Command;
+package test.Interpreter;
 
 import javax.naming.Context;
 

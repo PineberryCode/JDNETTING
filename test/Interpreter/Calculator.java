@@ -1,4 +1,4 @@
-package test.Command;
+package test.Interpreter;
 
 public class Calculator {
     private exmInterpreter exInter;
