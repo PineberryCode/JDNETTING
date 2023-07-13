@@ -1,6 +1,5 @@
 package Process;
 
-import Process.DefaultText;
 public class SubnetList {
     protected Subnet head;
     private int length;

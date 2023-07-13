@@ -21,7 +21,7 @@ public class Methods extends DefaultText implements DefaultClass {
         int temp;
         myArray = new int[x];
         while (j < x) {
-            System.out.print("Subnet00"+(j+1)+" => ");
+            System.out.print("SUBNET00"+(j+1)+" => ");
             int i = scn.nextInt();
             myArray[j] = i;
             j++;
