@@ -5,9 +5,11 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class Dev {
     public static void main(String[] args) {
+        Scanner scn = new Scanner (System.in);
         List<String> list = new ArrayList<>();
         int k = 1;
         var str = Arrays.toString(args);
@@ -21,7 +23,7 @@ public class Dev {
                 }
             }
             do {
-                System.out.print(k+" ");
+                System.out.print("Subnet00"+k+"=> "+ k+" ".concat(scn.nextLine()));
                 k++;
             } while (k <= Integer.parseInt(args[2]));
         }
