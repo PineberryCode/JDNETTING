@@ -1,12 +1,25 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
-public class VLSM {
+public class VLSM extends Subnetting {
 
-    List<String> myListIPAddress;
-    List<Integer> myListQuantityHost;
+    public List<Integer> listQuantityHost;
+    public List<Integer> listHostRequired;
+    public List<Integer> listPrefix;
+    public List<Integer> listJump;
     
-    public VLSM() {myListIPAddress = new ArrayList<>();}
+    public VLSM () {
+
+        listIPAddress = new ArrayList<>();
+        listQuantityHost = new ArrayList<>();
+        listHostRequired = new ArrayList<>();
+        listPrefix = new ArrayList<>();
+        listJump = new ArrayList<>();
+
+    }
+
 }

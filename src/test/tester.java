@@ -2,10 +2,14 @@ package test;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import command.commander;
+import command.t;
 // Create own variable SO;
 public class tester {
     
     public static void main (String[] args) {
+        t a = new t();
         int x = 19;
         String ip = "13.14.0.0";
         String[] parts = ip.split("\\.");
@@ -26,5 +30,6 @@ public class tester {
         for (int u=0; u<parts.length; u++) {
             System.out.println("index = > "+parts[u]);
         }
+        System.out.println(a.s);
     }
 }

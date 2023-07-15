@@ -9,62 +9,82 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
-public class Dev {
+import command.commander;
+import model.VLSM;
 
+public class Dev implements commander {
     public static void main(String[] args) {
         Scanner scn = new Scanner (System.in);
-        List<String> list = new ArrayList<>();
+        VLSM vlsm = new VLSM();
+        /*List<String> listIPs = new ArrayList<>();
         List<Integer> listHostRequired = new ArrayList<>();
         List<Integer> listQH = new ArrayList<>();
         List<Integer> listPrefix = new ArrayList<>();
+        List<Integer> jumpList = new ArrayList<>();*/
         int k = 1;
-        var str = Arrays.toString(args);
-
-        if (str.contains("-ip") && str.contains("-qh")) {
-            if (args[0] != null) {
-                list.add(args[0]);
+        //var str = Arrays.toString(args01);
+        String line = scn.nextLine();
+        String[] parts = line.split("\\s+");
+        int jump = 0;
+        if (line.contains(IP_ADDRESS) && line.contains(QUANTITY_HOST)) {
+            if (parts[0] != null) {
+                vlsm.listIPAddress.add(parts[0]);
                 System.out.println("Added IP address");
                 /*for (int x=0; x<list.size(); x++) {
                     System.out.print(list.get(x));
                 }*/
             }
-            System.out.println("#### Write the quantity host by subnet ###");
-            while (k <= Integer.parseInt(args[2])) {
-                System.out.print("Subnet00"+k+"=> ");
+            System.out.println("#### Write the quantity host by subnet ####");
+            /*
+             * Quantity host
+             */
+            while (k <= Integer.parseInt(parts[2])) {
+                System.out.print("Subnet "+k+"=> ");
                 int qh = Integer.parseInt(scn.next());
-                listQH.add(qh);
+                vlsm.listQuantityHost.add(qh);
                 k++;
             }
 
+            /* 
+            Sort list
+            */
             Comparator<Integer> descendingComparator = (a, b) -> b.compareTo(a);
-            Collections.sort(listQH, descendingComparator);
+            Collections.sort(vlsm.listQuantityHost, descendingComparator);
 
-            for (int f=0; f < listQH.size(); f++) {
-                System.out.println(listQH.get(f));
+            for (int f=0; f < vlsm.listQuantityHost.size(); f++) {
+                System.out.println(vlsm.listQuantityHost.get(f));
             }
-            for (int o=0; o<listQH.size(); o++) {
+            /*
+             * Prefix and Host Required
+             */
+            for (int o=0; o<vlsm.listQuantityHost.size(); o++) {
                 int i = 1;
                 while (true) {
                     int formula = (int) (Math.pow(2, i) - 2);
-                    if (formula >= listQH.get(o)) {
-                        listHostRequired.add(formula);
+                    if (formula >= vlsm.listQuantityHost.get(o)) {
+                        vlsm.listHostRequired.add(formula);
                         
-                        int prefix = 32 - i;
-                        
-                        listPrefix.add(prefix);
+                        vlsm.listPrefix.add(32-i);
                         i = 1;
                         break;
                     }
                     i++;
                 }
             }
-            for (int z=0; z<listHostRequired.size(); z++) {
-                System.out.println(listHostRequired.get(z));
+            for (int z=0; z<vlsm.listHostRequired.size(); z++) {
+                System.out.println(vlsm.listHostRequired.get(z));
             }
-            for (int a=0; a<listPrefix.size(); a++) {
-                int jump = (int) Math.pow(2, (32 - listPrefix.get(a)) - 8);
-                System.out.println("JUMP "+jump);
+
+            /*
+             * JUMPER
+             */
+            for (int a=0; a<vlsm.listPrefix.size(); a++) {
+                jump = (int) Math.pow(2, (32 - vlsm.listPrefix.get(a)) - 8);
+                vlsm.listJump.add(jump);
+                System.out.println("JUMP "+vlsm.listPrefix.get(a));
             }
+
+            
             scn.close();
         }
     }
