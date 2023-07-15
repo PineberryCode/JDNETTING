@@ -62,9 +62,7 @@ public class Dev {
                 System.out.println(listHostRequired.get(z));
             }
             for (int a=0; a<listPrefix.size(); a++) {
-                int result = (32 - listPrefix.get(a)) - 8;
-                int jump = (int) Math.pow(2, result);
-                System.out.println(result);
+                int jump = (int) Math.pow(2, (32 - listPrefix.get(a)) - 8);
                 System.out.println("JUMP "+jump);
             }
             scn.close();
