@@ -16,13 +16,7 @@ public class Dev implements commander {
     public static void main(String[] args) {
         Scanner scn = new Scanner (System.in);
         VLSM vlsm = new VLSM();
-        /*List<String> listIPs = new ArrayList<>();
-        List<Integer> listHostRequired = new ArrayList<>();
-        List<Integer> listQH = new ArrayList<>();
-        List<Integer> listPrefix = new ArrayList<>();
-        List<Integer> jumpList = new ArrayList<>();*/
         int k = 1;
-        //var str = Arrays.toString(args01);
         String line = scn.nextLine();
         String[] parts = line.split("\\s+");
         int jump = 0;
@@ -30,9 +24,6 @@ public class Dev implements commander {
             if (parts[0] != null) {
                 vlsm.listIPAddress.add(parts[0]);
                 System.out.println("Added IP address");
-                /*for (int x=0; x<list.size(); x++) {
-                    System.out.print(list.get(x));
-                }*/
             }
             System.out.println("#### Write the quantity host by subnet ####");
             /*
@@ -78,13 +69,32 @@ public class Dev implements commander {
             /*
              * JUMPER
              */
+            
             for (int a=0; a<vlsm.listPrefix.size(); a++) {
                 jump = (int) Math.pow(2, (32 - vlsm.listPrefix.get(a)) - 8);
                 vlsm.listJump.add(jump);
                 System.out.println("JUMP "+vlsm.listPrefix.get(a));
             }
-
+            String ipAddressConverted = "";
+            for (int hh=0;hh<vlsm.listIPAddress.size();hh++){
+                //System.out.println(vlsm.listIPAddress.get(hh));
+                String ipAddress = vlsm.listIPAddress.get(hh);
+                char[] c = ipAddress.toCharArray();
+                char[] x = c.clone();
+                ipAddressConverted = String.valueOf(x);
+            }
+            vlsm.listIPAddress.add(ipAddressConverted);
+            for (int t=0;t<vlsm.listIPAddress.size();t++) {
+                System.out.println(vlsm.listIPAddress.get(t));
+            }
             
+            /*parts[0].split("\\.");
+            while (i < parts.length) {
+                String microPart = parts[i];
+                if (microPart.equals("0")) {
+                    parts[i] = String.valueOf(3);
+                }
+            }*/
             scn.close();
         }
     }
