@@ -32,6 +32,29 @@ public class tester {
         }
         System.out.println(countZeros);
         System.out.println("JUMPER: "+Math.pow( 2, countZeros));
-
+        /*
+         * Subred mask
+         */
+        int j = 1;
+        StringBuilder strBuilderSubred = new StringBuilder();
+        while (j <= 32) {
+            if (strBuilderSubred.length() <= prefix) {
+                strBuilderSubred.append("1");
+            } else {
+                strBuilderSubred.append("0");
+            }
+            j++;
+        }
+        strBuilderSubred.insert(8, '.');
+        strBuilderSubred.insert(17, '.');
+        strBuilderSubred.insert(26, '.');
+        String[] partsSubredZeroAndOne = strBuilderSubred.toString().split("\\.");
+        System.out.println("4Octet: "+partsSubredZeroAndOne[3]);
+        int firstValue = Integer.parseInt(partsSubredZeroAndOne[0], 2);
+        int secondValue = Integer.parseInt(partsSubredZeroAndOne[1], 2);
+        int thirdValue = Integer.parseInt(partsSubredZeroAndOne[2],2);
+        int fourthValue = Integer.parseInt(partsSubredZeroAndOne[3],2);
+        System.out.println(firstValue+"."+secondValue+"."+thirdValue+"."+fourthValue);
+        System.out.println("1Or0 Subred => "+strBuilderSubred);
     }
 }
