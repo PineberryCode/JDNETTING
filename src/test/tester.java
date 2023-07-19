@@ -1,36 +1,37 @@
 package test;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import command.commander;
 // Create own variable SO;
 public class tester {
     
     public static void main (String[] args) {
-        int x = 19;
-        String ip = "13.14.0.0";
-        String[] parts = ip.split("\\.");
-        String identity = "";
-        int i = 0;
-        int jump = (int) Math.pow(2,(32 - x) - 8);
-        System.out.println(jump);
-        System.out.println(ip);
-        while (i < parts.length) {
-            identity = parts[i];
-            if (identity.equals("0")) {
-                parts[i] = String.valueOf(jump);
-                break;
+        int prefix = 30;
+        int i = 1;
+        StringBuilder strBuilder = new StringBuilder();
+        while (i <= 32) {
+            if (strBuilder.length() <= prefix) {
+                strBuilder.append("1");
+            } else {
+                strBuilder.append("0");
             }
             i++;
         }
-
-        for (int u=0; u<parts.length; u++) {
-            System.out.println("index = > "+parts[u]);
+        strBuilder.insert(8, '.');
+        strBuilder.insert(17, '.');
+        strBuilder.insert(26, '.');
+        String[] octetos = strBuilder.toString().split("\\.");
+        int countZeros = 1;
+        for (int g = 0; g < octetos.length; g++) {
+            if (octetos[g].contains("1") && octetos[g].contains("0")) {
+                for (int j = 0; j < octetos[g].length();j++) {
+                    if (octetos[g].charAt(j) == '0') {
+                        countZeros++;
+                    }
+                }
+                break;
+            }
         }
+        System.out.println(countZeros);
+        System.out.println("JUMPER: "+Math.pow( 2, countZeros));
 
-        char cero = 0;
-        char cuatro = 4;
-        System.out.println(cero+cuatro);
     }
 }
