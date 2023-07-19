@@ -64,8 +64,9 @@ public class Dev implements commander {
         /*
          * JUMPER
          */
-        int countZeros = 1;
+        
         for (int x = 0; x < vlsm.listPrefix.size(); x++) {
+            int countZeros = 1;
             StringBuilder strBuilder = new StringBuilder();
             int i = 1;
             while (i <= 32) {
@@ -94,11 +95,46 @@ public class Dev implements commander {
                 
             }
             vlsm.listJump.add((int) Math.pow(2,countZeros));
-            countZeros = 1;
+            //countZeros = 1;
         }
 
         for (int hh=0; hh<vlsm.listJump.size(); hh++) {
             System.out.println("JUMP: "+vlsm.listJump.get(hh));
+        }
+
+        /*
+         * Subred Mask
+         */
+        for (int q = 0; q < vlsm.listPrefix.size(); q++) {
+            int ll = 1;
+            StringBuilder strBuilder = new StringBuilder();
+            while (ll <= 32) {
+                if (strBuilder.length() <= vlsm.listPrefix.get(q)) {
+                    strBuilder.append("1");
+                } else {
+                    strBuilder.append("0");
+                }
+                ll++;
+            }
+            strBuilder.insert(8, '.');
+            strBuilder.insert(17, '.');
+            strBuilder.insert(26, '.');
+            String[] splitSubredZeroAndOne = strBuilder.toString().split("\\.");
+            int firstOctetValue = Integer
+            .parseInt(splitSubredZeroAndOne[0],2);
+            int secondOctetValue = Integer
+            .parseInt(splitSubredZeroAndOne[1], 2);
+            int thirdOctetValue = Integer
+            .parseInt(splitSubredZeroAndOne[2], 2);
+            int fourthOctetValue = Integer.
+            parseInt(splitSubredZeroAndOne[3], 2);
+            String subredMask = firstOctetValue+"."+secondOctetValue+"."
+                                +thirdOctetValue+"."+fourthOctetValue;
+            vlsm.listSubredMask.add(subredMask);
+        }
+
+        for (int s=0; s<vlsm.listSubredMask.size(); s++) {
+            System.out.println("Subred Mask: "+vlsm.listSubredMask.get(s));
         }
 
         String ipAddressConverted = "";
@@ -110,9 +146,9 @@ public class Dev implements commander {
             ipAddressConverted = String.valueOf(x);
         }
         vlsm.listRedIP.add(ipAddressConverted);
-        for (int t=0;t<vlsm.listRedIP.size();t++) {
+        /*for (int t=0;t<vlsm.listRedIP.size();t++) {
             System.out.println(vlsm.listRedIP.get(t));
-        }
+        }*/
         
         scn.close();
     }
