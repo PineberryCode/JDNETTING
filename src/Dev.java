@@ -2,11 +2,8 @@
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
 import java.util.Scanner;
 
 import command.commander;
@@ -19,7 +16,6 @@ public class Dev implements commander {
         int k = 1;
         String line = scn.nextLine();
         String[] parts = line.split("\\s+");
-        int jump = 0;
 
         System.out.println("##### WELCOME #####");
 
