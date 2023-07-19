@@ -12,7 +12,7 @@ public class VLSM extends Subnetting {
     
     public VLSM () {
 
-        listIPAddress = new ArrayList<>();
+        listRedIP = new ArrayList<>();
         listQuantityHost = new ArrayList<>();
         listHostRequired = new ArrayList<>();
         listPrefix = new ArrayList<>();

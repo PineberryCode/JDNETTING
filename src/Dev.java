@@ -20,7 +20,7 @@ public class Dev implements commander {
         System.out.println("##### WELCOME #####");
 
         if (!parts[0].equals(null)) {
-            vlsm.listIPAddress.add(parts[0]);
+            vlsm.listRedIP.add(parts[0]);
             System.out.println("Added IP address");
         }
         System.out.println("#### Write the quantity host by subnet ####");
@@ -59,13 +59,14 @@ public class Dev implements commander {
             }
         }
         for (int z=0; z<vlsm.listHostRequired.size(); z++) {
-            System.out.println(vlsm.listHostRequired.get(z));
+            System.out.println("Host required: "+vlsm.listHostRequired.get(z));
         }
         /*
          * JUMPER
          */
-        StringBuilder strBuilder = new StringBuilder();
+        int countZeros = 1;
         for (int x = 0; x < vlsm.listPrefix.size(); x++) {
+            StringBuilder strBuilder = new StringBuilder();
             int i = 1;
             while (i <= 32) {
                 if (strBuilder.length() <= vlsm.listPrefix.get(x)) {
@@ -79,20 +80,21 @@ public class Dev implements commander {
             strBuilder.insert(17, '.');
             strBuilder.insert(26, '.');
             String[] octects = strBuilder.toString().split("\\.");
-            int countZeros = 1;
+            
             for (int g = 0; g < octects.length; g++) {
                 if (octects[g].contains("1") && octects[g].contains("0")) {
                     for (int j = 0; j < octects[g].length();j++) {
                         if (octects[g].charAt(j) == '0') {
                             countZeros++;
-                            countZeros = 1;
+                            System.out.println(countZeros);
                         }
                     }
-                    break;
-                    
+                    break;  
                 }
+                
             }
             vlsm.listJump.add((int) Math.pow(2,countZeros));
+            countZeros = 1;
         }
 
         for (int hh=0; hh<vlsm.listJump.size(); hh++) {
@@ -100,25 +102,18 @@ public class Dev implements commander {
         }
 
         String ipAddressConverted = "";
-        for (int hh=0;hh<vlsm.listIPAddress.size();hh++){
+        for (int hh=0;hh<vlsm.listRedIP.size();hh++){
             //System.out.println(vlsm.listIPAddress.get(hh));
-            String ipAddress = vlsm.listIPAddress.get(hh);
+            String ipAddress = vlsm.listRedIP.get(hh);
             char[] c = ipAddress.toCharArray();
             char[] x = c.clone();
             ipAddressConverted = String.valueOf(x);
         }
-        vlsm.listIPAddress.add(ipAddressConverted);
-        for (int t=0;t<vlsm.listIPAddress.size();t++) {
-            System.out.println(vlsm.listIPAddress.get(t));
+        vlsm.listRedIP.add(ipAddressConverted);
+        for (int t=0;t<vlsm.listRedIP.size();t++) {
+            System.out.println(vlsm.listRedIP.get(t));
         }
         
-        /*parts[0].split("\\.");
-        while (i < parts.length) {
-            String microPart = parts[i];
-            if (microPart.equals("0")) {
-                parts[i] = String.valueOf(3);
-            }
-        }*/
         scn.close();
     }
     
