@@ -14,4 +14,4 @@ jdnet 192.168.0.0 11
 ---
 `Alias => jdnet` <br>
 `Red IP => 192.168.0.0` <br>
-`Quantity hosts => 11`
+`Quantity subnets => 11`
