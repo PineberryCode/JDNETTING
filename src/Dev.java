@@ -14,10 +14,9 @@ public class Dev implements commander {
         Scanner scn = new Scanner (System.in);
         VLSM vlsm = new VLSM();
         int k = 1;
+        System.out.println("##### WELCOME #####");
         String line = scn.nextLine();
         String[] parts = line.split("\\s+");
-
-        System.out.println("##### WELCOME #####");
 
         if (!parts[0].equals(null)) {
             vlsm.listRedIP.add(parts[0]);
@@ -87,10 +86,9 @@ public class Dev implements commander {
                     for (int j = 0; j < octects[g].length();j++) {
                         if (octects[g].charAt(j) == '0') {
                             countZeros++;
-                            System.out.println(countZeros);
                         }
                     }
-                    break;  
+                    break;
                 }
                 
             }
@@ -136,20 +134,30 @@ public class Dev implements commander {
         for (int s=0; s<vlsm.listSubredMask.size(); s++) {
             System.out.println("Subred Mask: "+vlsm.listSubredMask.get(s));
         }
-
-        String ipAddressConverted = "";
-        for (int hh=0;hh<vlsm.listRedIP.size();hh++){
-            //System.out.println(vlsm.listIPAddress.get(hh));
-            String ipAddress = vlsm.listRedIP.get(hh);
-            char[] c = ipAddress.toCharArray();
-            char[] x = c.clone();
-            ipAddressConverted = String.valueOf(x);
+        /*
+         * RED IP
+         */
+        for (int w = 0; w < vlsm.listSubredMask.size(); w++) {
+            String redIP = vlsm.listRedIP.get(w);
+            String[] splitRedIP = redIP.split("\\.");
+            String[] splitSubredMask = vlsm.listSubredMask.get(w).split("\\.");
+            for (int i = 0; i < splitSubredMask.length; i++) {
+                if (!splitSubredMask[i].contains("255")) {
+                    int octectRed = Integer.parseInt(splitRedIP[i]);
+                    int jumper = vlsm.listJump.get(w);
+                    int octectModified = octectRed + jumper;
+                    splitRedIP[i] = String.valueOf(octectModified);
+                    break;
+                }
+            }
+            String newNet = String.join(".",splitRedIP);
+            vlsm.listRedIP.add(newNet);
         }
-        vlsm.listRedIP.add(ipAddressConverted);
-        /*for (int t=0;t<vlsm.listRedIP.size();t++) {
+
+        for (int t=0;t<vlsm.listRedIP.size();t++) {
             System.out.println(vlsm.listRedIP.get(t));
-        }*/
-        
+        }
+
         scn.close();
     }
     
