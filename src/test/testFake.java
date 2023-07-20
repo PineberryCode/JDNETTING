@@ -1,23 +1,47 @@
 package test;
 
 public class testFake {
-    public static void main (String[] args) {
-        int[] myArray = new int[5];
-        myArray[0] = 6;
-        myArray[1] = 2;
-        myArray[2] = 3;
-        myArray[3] = 5;
-        myArray[4] = 8;
 
-        int max = myArray[0];
+    public static void prinTable(String[][] data, int[] columnWidths) {
+        int totalWidth = 1;
+        for (int w : columnWidths) {
+            totalWidth += w + 3;
+        }
 
-        for (int k = 0; k < myArray.length; k++) { // 6, 2, 3, 5, 8
-            if (myArray[k] >= max) {
-                max = myArray[k];
+        printLine(totalWidth);
+        
+        for (int i = 0; i < data.length; i++) {
+            System.out.print("| ");
+            for (int j = 0; j < data[i].length; j++) {
+                String cell = data[i][j];
+                int width = columnWidths[j];
+                System.out.print(padRight(cell, width)+" | ");
+            }
+            System.out.println();
+            if (i == 0) {
+                printLine(totalWidth);
             }
         }
-        System.out.println(max);
+        printLine(totalWidth);
+    }
 
-        System.out.println("Exponente: "+Math.pow(2,7));
+    public static String padRight(String cell, int width) {
+        return String.format("%-"+width+"s",cell);
+    }
+
+    public static void printLine(int width) {
+        for (int i = 0; i < width; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+    }
+
+    public static void main (String[] args) {
+        String[][] data = {
+            {"Host","Host Required","Red IP","Prefix","SubredMask"},
+            {"5000","8190","192.168.0.0","19","255.255.224.0"}
+        };
+        int[] columnWidths = {5,13,11,6,13};
+        prinTable(data, columnWidths);
     }
 }

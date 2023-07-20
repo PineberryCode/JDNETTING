@@ -76,7 +76,7 @@ public class VLSM extends Subnetting {
             int ll = 1;
             StringBuilder strBuilder = new StringBuilder();
             while (ll <= 32) {
-                if (strBuilder.length() <= listPrefix.get(q)) {
+                if (strBuilder.length() < listPrefix.get(q)) {
                     strBuilder.append("1");
                 } else {
                     strBuilder.append("0");
@@ -86,6 +86,7 @@ public class VLSM extends Subnetting {
             strBuilder.insert(8, '.');
             strBuilder.insert(17, '.');
             strBuilder.insert(26, '.');
+            System.out.println(strBuilder);
             String[] splitSubredZeroAndOne = strBuilder.toString().split("\\.");
             int firstOctetValue = Integer
             .parseInt(splitSubredZeroAndOne[0],2);

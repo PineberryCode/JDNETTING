@@ -48,6 +48,9 @@ public class Dev implements commander {
         for (int z=0; z<vlsm.listHostRequired.size(); z++) {
             System.out.println("Host required: "+vlsm.listHostRequired.get(z));
         }
+        for (int h = 0; h<vlsm.listPrefix.size(); h++) {
+            System.out.println("Prefix: "+vlsm.listPrefix.get(h));
+        }
         /*
          * JUMPER
          */
