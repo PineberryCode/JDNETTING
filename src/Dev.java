@@ -137,7 +137,8 @@ public class Dev implements commander {
         /*
          * RED IP
          */
-        for (int w = 0; w < vlsm.listSubredMask.size(); w++) {
+        int w = 0;
+        while (w < vlsm.listSubredMask.size()) {
             String redIP = vlsm.listRedIP.get(w);
             String[] splitRedIP = redIP.split("\\.");
             String[] splitSubredMask = vlsm.listSubredMask.get(w).split("\\.");
@@ -150,8 +151,11 @@ public class Dev implements commander {
                     break;
                 }
             }
-            String newNet = String.join(".",splitRedIP);
-            vlsm.listRedIP.add(newNet);
+            if (w < vlsm.listSubredMask.size()-1) {
+                String newNet = String.join(".",splitRedIP);
+                vlsm.listRedIP.add(newNet);
+            }
+            w++;
         }
 
         for (int t=0;t<vlsm.listRedIP.size();t++) {
