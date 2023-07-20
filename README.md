@@ -1,14 +1,17 @@
 # WELCOME TO JDNETTING
 
 ### HOW COULD YOU USE IT?
-Steps
-- Write the Red IP
-- Write how many quantity hosts you want
+Steps:
+- Execute *running.sh*
+```
+./running.sh
+```
+- Write the red IP and the number of subnets you want.
+```
+jdnet 192.168.0.0 11
+```
 
 ---
-
-```
-192.168.0.0 11
-```
+`Alias => jdnet` <br>
 `Red IP => 192.168.0.0` <br>
 `Quantity hosts => 11`
