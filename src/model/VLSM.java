@@ -86,7 +86,6 @@ public class VLSM extends Subnetting {
             strBuilder.insert(8, '.');
             strBuilder.insert(17, '.');
             strBuilder.insert(26, '.');
-            System.out.println(strBuilder);
             String[] splitSubredZeroAndOne = strBuilder.toString().split("\\.");
             int firstOctetValue = Integer
             .parseInt(splitSubredZeroAndOne[0],2);
@@ -123,6 +122,61 @@ public class VLSM extends Subnetting {
             }
             w++;
         }
+    }
+
+    /*
+     * Table
+     */
+    public void Overview () {
+        String[][] data = new String[listRedIP.size()+1][6];
+        data[0] = new String[]{"Subnet","Host","Host Required","Red IP","Prefix","Subred Mask"};
+        int num=1;
+        for (int k = 0; k < listRedIP.size(); k++) {
+            data[k+1][0] = "Subnet "+num++;
+            data[k+1][1] = listQuantityHost.get(k).toString();
+            data[k+1][2] = listHostRequired.get(k).toString();
+            data[k+1][3] = listRedIP.get(k).toString();
+            data[k+1][4] = listPrefix.get(k).toString();
+            data[k+1][5] = listSubredMask.get(k).toString();
+        }
+
+        int[] columnWidths = {10,5,13,15,6,15};
+        printTable(data, columnWidths);
+    }
+
+    private String paddingRight (String cell, int width) {
+        return String.format("%-"+width+"s",cell);
+    }
+
+    private void printLine (int width) {
+        for (int i = 0; i < width; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+    }
+
+    private void printTable (String[][] data, int[] columnWidths) {
+        int totalWidth = 1;
+        for (int w : columnWidths) {
+            totalWidth += w + 3;
+        }
+
+        printLine(totalWidth);
+
+        for (int i = 0; i < data.length; i++) {
+            System.out.print("| ");
+            for (int j = 0; j < data[i].length; j++) {
+                String cell = data[i][j];
+                int width = columnWidths[j];
+                System.out.print(paddingRight(cell, width)+" | ");
+            }
+            System.out.println();
+
+            if (i == 0) {
+                printLine(totalWidth);
+            }
+        }
+        printLine(totalWidth);
     }
 
 }

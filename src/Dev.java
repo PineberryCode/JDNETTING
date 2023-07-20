@@ -13,15 +13,16 @@ public class Dev {
         Scanner scn = new Scanner (System.in);
         VLSM vlsm = new VLSM();
         int k = 1;
-        System.out.println("##### WELCOME #####");
+        System.out.println("##### WELCOME TO JDNETTING#####");
         String line = scn.nextLine();
         String[] parts = line.split("\\s+");
 
         if (!parts[0].equals(null)) {
             vlsm.listRedIP.add(parts[0]);
-            System.out.println("Added IP address");
+            System.out.println("Red IP added");
         }
         System.out.println("#### Write the quantity host by subnet ####");
+        
         /*
          * Quantity host
          */
@@ -31,15 +32,13 @@ public class Dev {
             vlsm.listQuantityHost.add(qh);
             k++;
         }
+
         /*
          * Sort List
          */
         Comparator<Integer> descendingComparator = (a, b) -> b.compareTo(a);
         Collections.sort(vlsm.listQuantityHost, descendingComparator);
-        
-        for (int f=0; f < vlsm.listQuantityHost.size(); f++) {
-            System.out.println(vlsm.listQuantityHost.get(f));
-        }
+
         /*
          * Prefix and Host Required
          */
@@ -59,6 +58,10 @@ public class Dev {
          * RED IP
          */
         vlsm.FindRedIP();
+        /*
+         * Overview O.O
+         */
+        vlsm.Overview();
 
         scn.close();
     }

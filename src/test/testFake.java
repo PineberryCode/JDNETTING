@@ -41,7 +41,7 @@ public class testFake {
             {"Host","Host Required","Red IP","Prefix","SubredMask"},
             {"5000","8190","192.168.0.0","19","255.255.224.0"}
         };
-        int[] columnWidths = {5,13,11,6,13};
+        int[] columnWidths = {5,13,15,6,15};
         prinTable(data, columnWidths);
     }
 }

@@ -6,8 +6,4 @@ public abstract class Subnetting {
     public List<String> listRedIP;
     public List<String> listSubredMask;
 
-    public void Overview () {
-        
-    }
-
 }

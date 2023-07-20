@@ -4,7 +4,7 @@ package test;
 public class tester {
     
     public static void main (String[] args) {
-        int prefix = 30;
+        /*int prefix = 30;
         int i = 1;
         StringBuilder strBuilder = new StringBuilder();
         while (i <= 32) {
@@ -35,7 +35,7 @@ public class tester {
         /*
          * Subred mask
          */
-        int j = 1;
+        /*int j = 1;
         StringBuilder strBuilderSubred = new StringBuilder();
         while (j <= 32) {
             if (strBuilderSubred.length() <= prefix) {
@@ -55,6 +55,12 @@ public class tester {
         int thirdValue = Integer.parseInt(partsSubredZeroAndOne[2],2);
         int fourthValue = Integer.parseInt(partsSubredZeroAndOne[3],2);
         System.out.println(firstValue+"."+secondValue+"."+thirdValue+"."+fourthValue);
-        System.out.println("1Or0 Subred => "+strBuilderSubred);
+        System.out.println("1Or0 Subred => "+strBuilderSubred);*/
+        System.out.print(padRight("Hola", 10));
+        System.out.print(padRight("Hola", 10));
+        System.out.print(padRight("Hola", 10));
+    }
+    public static String padRight(String cell, int width) {
+        return String.format("%-"+width+"s",cell);
     }
 }
