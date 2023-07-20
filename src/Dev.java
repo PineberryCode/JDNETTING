@@ -10,15 +10,16 @@ import model.VLSM;
 
 public class Dev {
     public static void main(String[] args) {
+        //var str = Arrays.toString(args);
         Scanner scn = new Scanner (System.in);
         VLSM vlsm = new VLSM();
         int k = 1;
-        System.out.println("##### WELCOME TO JDNETTING#####");
-        String line = scn.nextLine();
-        String[] parts = line.split("\\s+");
+        System.out.println("##### WELCOME TO JDNETTING #####");
+        //String line = scn.nextLine();
+        //String[] parts = str.split("\\s+");
 
-        if (!parts[0].equals(null)) {
-            vlsm.listRedIP.add(parts[0]);
+        if (!args[0].equals(null)) {
+            vlsm.listRedIP.add(args[0]);
             System.out.println("Red IP added");
         }
         System.out.println("#### Write the quantity host by subnet ####");
@@ -26,7 +27,7 @@ public class Dev {
         /*
          * Quantity host
          */
-        while (k <= Integer.parseInt(parts[1])) {
+        while (k <= Integer.parseInt(args[1])) {
             System.out.print("Subnet "+k+"=> ");
             int qh = Integer.parseInt(scn.next());
             vlsm.listQuantityHost.add(qh);
@@ -58,6 +59,7 @@ public class Dev {
          * RED IP
          */
         vlsm.FindRedIP();
+
         /*
          * Overview O.O
          */
