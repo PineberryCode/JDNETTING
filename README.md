@@ -2,6 +2,10 @@
 
 ### HOW COULD YOU USE IT?
 Steps:
+- Enable execute permission
+```
+chmod +x running.sh
+```
 - Execute *running.sh*
 ```
 ./running.sh
