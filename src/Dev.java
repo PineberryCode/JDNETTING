@@ -32,9 +32,9 @@ public class Dev implements commander {
             vlsm.listQuantityHost.add(qh);
             k++;
         }
-        /* 
-        Sort list
-        */
+        /*
+         * Sort List
+         */
         Comparator<Integer> descendingComparator = (a, b) -> b.compareTo(a);
         Collections.sort(vlsm.listQuantityHost, descendingComparator);
         for (int f=0; f < vlsm.listQuantityHost.size(); f++) {
@@ -43,58 +43,15 @@ public class Dev implements commander {
         /*
          * Prefix and Host Required
          */
-        for (int o=0; o<vlsm.listQuantityHost.size(); o++) {
-            int i = 1;
-            while (true) {
-                int formula = (int) (Math.pow(2, i) - 2);
-                if (formula >= vlsm.listQuantityHost.get(o)) {
-                    vlsm.listHostRequired.add(formula);
-                    
-                    vlsm.listPrefix.add(32 - i);
-                    i = 1;
-                    break;
-                }
-                i++;
-            }
-        }
+        vlsm.PrefixAndHostRequired();
+
         for (int z=0; z<vlsm.listHostRequired.size(); z++) {
             System.out.println("Host required: "+vlsm.listHostRequired.get(z));
         }
         /*
          * JUMPER
          */
-        
-        for (int x = 0; x < vlsm.listPrefix.size(); x++) {
-            int countZeros = 1;
-            StringBuilder strBuilder = new StringBuilder();
-            int i = 1;
-            while (i <= 32) {
-                if (strBuilder.length() <= vlsm.listPrefix.get(x)) {
-                    strBuilder.append("1");
-                } else {
-                    strBuilder.append("0");
-                }
-                i++;
-            }
-            strBuilder.insert(8, '.');
-            strBuilder.insert(17, '.');
-            strBuilder.insert(26, '.');
-            String[] octects = strBuilder.toString().split("\\.");
-            
-            for (int g = 0; g < octects.length; g++) {
-                if (octects[g].contains("1") && octects[g].contains("0")) {
-                    for (int j = 0; j < octects[g].length();j++) {
-                        if (octects[g].charAt(j) == '0') {
-                            countZeros++;
-                        }
-                    }
-                    break;
-                }
-                
-            }
-            vlsm.listJump.add((int) Math.pow(2,countZeros));
-            //countZeros = 1;
-        }
+        vlsm.Jumper();
 
         for (int hh=0; hh<vlsm.listJump.size(); hh++) {
             System.out.println("JUMP: "+vlsm.listJump.get(hh));
@@ -103,60 +60,16 @@ public class Dev implements commander {
         /*
          * Subred Mask
          */
-        for (int q = 0; q < vlsm.listPrefix.size(); q++) {
-            int ll = 1;
-            StringBuilder strBuilder = new StringBuilder();
-            while (ll <= 32) {
-                if (strBuilder.length() <= vlsm.listPrefix.get(q)) {
-                    strBuilder.append("1");
-                } else {
-                    strBuilder.append("0");
-                }
-                ll++;
-            }
-            strBuilder.insert(8, '.');
-            strBuilder.insert(17, '.');
-            strBuilder.insert(26, '.');
-            String[] splitSubredZeroAndOne = strBuilder.toString().split("\\.");
-            int firstOctetValue = Integer
-            .parseInt(splitSubredZeroAndOne[0],2);
-            int secondOctetValue = Integer
-            .parseInt(splitSubredZeroAndOne[1], 2);
-            int thirdOctetValue = Integer
-            .parseInt(splitSubredZeroAndOne[2], 2);
-            int fourthOctetValue = Integer.
-            parseInt(splitSubredZeroAndOne[3], 2);
-            String subredMask = firstOctetValue+"."+secondOctetValue+"."
-                                +thirdOctetValue+"."+fourthOctetValue;
-            vlsm.listSubredMask.add(subredMask);
-        }
+        vlsm.FindSubredMask();
 
         for (int s=0; s<vlsm.listSubredMask.size(); s++) {
             System.out.println("Subred Mask: "+vlsm.listSubredMask.get(s));
         }
+
         /*
          * RED IP
          */
-        int w = 0;
-        while (w < vlsm.listSubredMask.size()) {
-            String redIP = vlsm.listRedIP.get(w);
-            String[] splitRedIP = redIP.split("\\.");
-            String[] splitSubredMask = vlsm.listSubredMask.get(w).split("\\.");
-            for (int i = 0; i < splitSubredMask.length; i++) {
-                if (!splitSubredMask[i].contains("255")) {
-                    int octectRed = Integer.parseInt(splitRedIP[i]);
-                    int jumper = vlsm.listJump.get(w);
-                    int octectModified = octectRed + jumper;
-                    splitRedIP[i] = String.valueOf(octectModified);
-                    break;
-                }
-            }
-            if (w < vlsm.listSubredMask.size()-1) {
-                String newNet = String.join(".",splitRedIP);
-                vlsm.listRedIP.add(newNet);
-            }
-            w++;
-        }
+        vlsm.FindRedIP();
 
         for (int t=0;t<vlsm.listRedIP.size();t++) {
             System.out.println(vlsm.listRedIP.get(t));
