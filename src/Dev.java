@@ -10,13 +10,10 @@ import model.VLSM;
 
 public class Dev {
     public static void main(String[] args) {
-        //var str = Arrays.toString(args);
         Scanner scn = new Scanner (System.in);
         VLSM vlsm = new VLSM();
         int k = 1;
         System.out.println("##### WELCOME TO JDNETTING #####");
-        //String line = scn.nextLine();
-        //String[] parts = str.split("\\s+");
 
         if (!args[0].equals(null)) {
             vlsm.listRedIP.add(args[0]);
