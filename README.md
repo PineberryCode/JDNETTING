@@ -18,3 +18,5 @@ chmod +x running.sh
 ```
 jdnet 192.168.0.0 11
 ```
+
+Note: Download and install **jdk-19**
