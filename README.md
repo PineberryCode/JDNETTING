@@ -2,6 +2,10 @@
 
 ### HOW COULD YOU USE IT?
 Steps:
+- Clone the repository
+```
+https://github.com/PineberryCode/JDNETTING.git
+```
 - Enable execute permission
 ```
 chmod +x running.sh
