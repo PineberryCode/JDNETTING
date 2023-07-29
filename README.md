@@ -20,3 +20,5 @@ jdnet 192.168.0.0 11
 ```
 ### Requisites
 > jdk-19
+
+Psdt: Only VLSM for this moment ❗
