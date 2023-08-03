@@ -14,6 +14,10 @@ chmod +x running.sh
 ```
 ./running.sh
 ```
+- Reload
+```
+source ./running.sh
+```
 - Write the red IP and the number of subnets you want.
 ```
 jdnet 192.168.0.0 11
