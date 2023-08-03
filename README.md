@@ -4,7 +4,7 @@
 Steps:
 - Clone the repository
 ```
-https://github.com/PineberryCode/JDNETTING.git
+git clone https://github.com/PineberryCode/JDNETTING.git
 ```
 - Enable execute permission
 ```
