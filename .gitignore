@@ -1,1 +1,3 @@
 .vscode
+src/test/*.java
+bin/test/*.class
