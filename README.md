@@ -32,7 +32,7 @@ You can use it on your phone.
 
 > Download the __JDK__ of your preferences in **Termux**.
 
-> Follow the [steps](#Steps)
+> Follow the [steps](## Steps)
 
 
 Psdt: Only VLSM for this moment ❗
