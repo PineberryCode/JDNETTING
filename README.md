@@ -1,7 +1,9 @@
 # WELCOME TO JDNETTING
 
 ### HOW COULD YOU USE IT?
-Steps:
+
+## Steps
+
 - Clone the repository
 ```
 git clone https://github.com/PineberryCode/JDNETTING.git
@@ -22,5 +24,15 @@ source ./running.sh
 ```
 jdnet 192.168.0.0 11
 ```
+### MOBILE
+
+You can use it on your phone.
+
+> Install **Termux** on your celphone.
+
+> Download the __JDK__ of your preferences in **Termux**.
+
+> [Follow the steps](#Steps)
+
 
 Psdt: Only VLSM for this moment ❗
