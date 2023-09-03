@@ -2,7 +2,7 @@
 
 ### HOW COULD YOU USE IT?
 
-## Steps
+###### Steps
 
 - Clone the repository
 ```
