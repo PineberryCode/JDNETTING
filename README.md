@@ -36,10 +36,4 @@ You can use it on your phone.
 
 - - -
 
-<details>
-  <summary>Overview</summary>
-  <img src="https://i.postimg.cc/PxHp7S4H/Screenshot-20240322-111108-edit-43479922423573.jpg" alt="Overview">
-</details>
-
-- - -
 Psdt: Only VLSM for this moment ❗
